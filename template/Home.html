@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, h2 {
+            color: navy;
+        }
+        select, button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: navy;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+    <script>
+        function navigateToPage() {
+            var selectedOption = document.getElementById("reportSelector").value;
+            if (selectedOption) {
+                window.location.href = selectedOption;
+            }
+        }
+
+        function resetSelection() {
+            document.getElementById("reportForm").reset();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>TASMAC REPORTS</h1>    
+        <h2>Select Report</h2>
+        <form id="reportForm">
+            <select id="reportSelector">
+                <option value="" disabled selected>Select a report</option>
+                <option value="month.html">Monthly Report</option>
+                <option value="year.html">Yearly Report</option>
+            </select>
+            <br><br>
+            <button type="button" onclick="navigateToPage()">Submit</button>
+            <button type="button" onclick="resetSelection()">Reset</button>
+        </form>
+    </div>
+</body>
+</html>

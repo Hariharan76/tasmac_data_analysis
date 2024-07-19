@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>     
+        body {
+                font-family: Arial, sans-serif;
+            }
+            h1, h2 {
+                color: navy;
+            }
+            select, button {
+                font-size: 16px;
+                padding: 10px;
+                margin: 10px 0;
+            }
+            button {
+                background-color: navy;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            button:hover {
+                background-color: darkblue;
+            }
+            .container {
+                text-align: center;
+                margin-top: 50px;
+            }
+        
+    </style>
+</head>
+<body><center>
+    <h2>TASMAC Monthily Report</h2>
+    <form action="/report" method="post">            
+        <label for="district">Choose a district:</label>
+        <select id="district" name="district">
+            <option value="ALL">All</option>
+            <option value="Arakkonam">Arakkonam</option>
+            <option value="Chennai Central">Chennai Central</option>
+            <option value="Chennai North">Chennai North</option>
+            <option value="Chennai South">Chennai South</option>
+            <option value="Coimbatore North">Coimbatore North</option>
+            <option value="Coimbatore South">Coimbatore South</option>
+            <option value="Cuddalore">Cuddalore</option>
+            <option value="Dharmapuri">Dharmapuri</option>
+            <option value="Dindugal">Dindugal</option>
+            <option value="Erode">Erode</option>
+            <option value="Kancheepuram North">Kancheepuram North</option>
+            <option value="Kancheepuram South">Kancheepuram South</option>
+            <option value="Karur">Karur</option>
+            <option value="Krishnagiri">Krishnagiri</option>
+            <option value="Madurai North">Madurai North</option>
+            <option value="Madurai South">Madurai South</option>
+            <option value="Nagapattinam">Nagapattinam</option>
+            <option value="Kanyakumari">Kanyakumari</option>
+            <option value="Namakkal">Namakkal</option>
+            <option value="Nilgiris">Nilgiris</option>
+            <option value="Perambalur">Perambalur</option>
+            <option value="Pudukottai">Pudukottai</option>
+            <option value="Ramnad">Ramnad</option>
+            <option value="Salem">Salem</option>
+            <option value="Sivaganga">Sivaganga</option>
+            <option value="Thanjavur">Thanjavur</option>
+            <option value="Theni">Theni</option>
+            <option value="Thiruvallur East">Thiruvallur East</option>
+            <option value="Thiruvarur">Thiruvarur</option>
+            <option value="Thiruvallur West">Thiruvallur West</option>
+            <option value="Tirunelveli">Tirunelveli</option>
+            <option value="Tiruppur">Tiruppur</option>
+            <option value="Trichy">Trichy</option>
+            <option value="Tuticorin">Tuticorin</option>
+            <option value="Tiruvannamalai">Tiruvannamalai</option>
+            <option value="Vellore">Vellore</option>
+            <option value="Villupuram">Villupuram</option>
+            <option value="Virudhunagar">Virudhunagar</option>
+            </select>
+            <br> <br>
+        <label for="date">Choose Date:</label>
+        <input type="date" id="date" name="date" required>
+        <br><br>
+        <input type="submit" value="Submit">          
+        </form>        
+        
+    </form>
+</center>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tasmac Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .image-container img {
+            max-width: 100%; /* Ensure images don't exceed their container */
+            height: auto; /* Maintain aspect ratio */
+            border: 1px solid #ddd; /* Optional: Adds a border around images */
+            border-radius: 4px; /* Optional: Adds rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a slight shadow for a 3D effect */
+            transition: transform 0.2s; /* Optional: Adds a transition effect when hovering */
+        }
+        .image-container img:hover {
+            transform: scale(1.05); /* Optional: Slightly enlarges the image on hover */
+        }
+    </style>
+</head>
+<body>
+    <h2>Tasmac Report Graph View </h2>
+    <div class="image-container">
+        {% for image in images %}
+            <img src="/images/{{ image }}" alt="Bar Chart">
+        {% endfor %}
+    </div>
+</body>
+</html>

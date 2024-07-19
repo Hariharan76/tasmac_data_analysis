@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    h2 {
+        text-align: center;
+    }
+    form {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <center><h2>TASMAC Report for {{ selected_date }}</h2></center>
+    <center><h2>TASMAC Report Place {{ district }}</h2></center>
+    <form action="/" method="get">
+        <input type="submit" value="Back">
+    </form>
+    <center><h2>Largest 10 IMFS</h2></center>
+        <table style="width:100%">
+        <tr>
+            <th>District Name</th>
+            <th>Shop No</th> 
+            <th>{{data1["Given date"]}}</th>
+            <th>{{data1["Last year same month"]}}</th>
+            <th>Growth Comparison</th>
+            <th>{{data1["Current month last month"]}}</th>
+            <th>{{data1["Last month last year"]}}</th>
+            <th>Growth Comparison</th>
+            <th>{{data1['Current month two months ago']}}</th>
+            <th>{{data1['Last year current month two months ago']}}</th>
+            <th>Growth Comparison</th>
+        </tr>
+        {% for row in data["IMFS_largest"] %}
+        <tr>
+          <td>{{ row['district_name'] }}</td>
+          <td>{{ row['Shop no'] }}</td>
+          <td>{{ row['current_month_sales'] }}</td>
+          <td>{{ row['last_year_sales'] }}</td>
+          <td>{{ row['current_month_percentage'] }}</td>
+          <td>{{ row['Last_month_sales'] }}</td>
+          <td>{{ row['IMFS_Last_Year_Last_Month_Sales'] }}</td>
+          <td>{{ row['IMFS_last_Month_Sales_percentage'] }}</td>
+          <td>{{ row['IMFS_Two_Months_Ago_Sales'] }}</td>
+          <td>{{ row['IMFS_Last_Year_Two_Months_Ago_Sales'] }}</td>
+          <td>{{ row['IMFS_Two_Month_ago_Sales_percentage'] }}</td>
+      </tr>
+      {% endfor %}
+</table>
+<center><h2>Smallest 10 IMFS</h2></center>
+<table style="width:100%">
+  <tr>
+    <th>District Name</th>
+    <th>Shop No</th> 
+    <th>{{data1["Given date"]}}</th>
+    <th>{{data1["Last year same month"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1["Current month last month"]}}</th>
+    <th>{{data1["Last month last year"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1['Current month two months ago']}}</th>
+    <th>{{data1['Last year current month two months ago']}}</th>
+    <th>Growth Comparison</th>
+</tr>
+  {% for row in data["IMFS_smallest"] %}
+  <tr>
+    <td>{{ row['district_name'] }}</td>
+    <td>{{ row['Shop no'] }}</td>
+    <td>{{ row['current_month_sales'] }}</td>
+    <td>{{ row['last_year_sales'] }}</td>
+    <td>{{ row['current_month_percentage'] }}</td>
+    <td>{{ row['Last_month_sales'] }}</td>
+    <td>{{ row['IMFS_Last_Year_Last_Month_Sales'] }}</td>
+    <td>{{ row['IMFS_last_Month_Sales_percentage'] }}</td>
+    <td>{{ row['IMFS_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['IMFS_Last_Year_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['IMFS_Two_Month_ago_Sales_percentage'] }}</td>
+</tr>
+{% endfor %}
+</table>
+<center><h2>Largest 10  Shops in BEER</h2></center>
+<table style="width:100%">
+  <tr>
+    <th>District Name</th>
+    <th>Shop No</th> 
+    <th>{{data1["Given date"]}}</th>
+    <th>{{data1["Last year same month"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1["Current month last month"]}}</th>
+    <th>{{data1["Last month last year"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1['Current month two months ago']}}</th>
+    <th>{{data1['Last year current month two months ago']}}</th>
+    <th>Growth Comparison</th>
+</tr>
+  {% for row in data["BEER_largest"] %}
+  <tr>
+    <td>{{ row['district_name'] }}</td>
+    <td>{{ row['Shop no'] }}</td>
+    <td>{{ row['current_month_sales'] }}</td>
+    <td>{{ row['last_year_sales'] }}</td>
+    <td>{{ row['current_month_beer_percentage'] }}</td>
+    <td>{{ row['Last_month_sales'] }}</td>
+    <td>{{ row['Beer_Last_Year_Last_Month_Sales'] }}</td>
+    <td>{{ row['beer_last_Month_Sales_percentage']  }}</td>
+    <td>{{ row['beer_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['beer_Last_Year_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['beer_Two_Month_ago_Sales_percentage'] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<center><h2>Smallest 10  Shops in BEER</h2></center>
+<table style="width:100%">
+  <tr>
+    <th>District Name</th>
+    <th>Shop No</th> 
+    <th>{{data1["Given date"]}}</th>
+    <th>{{data1["Last year same month"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1["Current month last month"]}}</th>
+    <th>{{data1["Last month last year"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1['Current month two months ago']}}</th>
+    <th>{{data1['Last year current month two months ago']}}</th>
+    <th>Growth Comparison</th>
+</tr>
+  {% for row in data["BEER_smallest"] %}
+  <tr>
+    <td>{{ row['district_name'] }}</td>
+    <td>{{ row['Shop no'] }}</td>
+    <td>{{ row['current_month_sales'] }}</td>
+    <td>{{ row['last_year_sales'] }}</td>
+    <td>{{ row['current_month_beer_percentage'] }}</td>
+    <td>{{ row['Last_month_sales'] }}</td>
+    <td>{{ row['Beer_Last_Year_Last_Month_Sales'] }}</td>
+    <td>{{ row['beer_last_Month_Sales_percentage']  }}</td>
+    <td>{{ row['beer_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['beer_Last_Year_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['beer_Two_Month_ago_Sales_percentage'] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<center><h2>Largest 10  Shops in Sales</h2></center>
+<table style="width:100%">
+  <tr>
+    <th>District Name</th>
+    <th>Shop No</th> 
+    <th>{{data1["Given date"]}}</th>
+    <th>{{data1["Last year same month"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1["Current month last month"]}}</th>
+    <th>{{data1["Last month last year"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1['Current month two months ago']}}</th>
+    <th>{{data1['Last year current month two months ago']}}</th>
+    <th>Growth Comparison</th>
+</tr>
+  {% for row in data["SALES_largest"] %}
+  <tr>
+    <td>{{ row['district_name'] }}</td>
+    <td>{{ row['Shop no'] }}</td>
+    <td>{{ row['current_month_sales'] }}</td>
+    <td>{{ row['last_year_sales'] }}</td>
+    <td>{{ row['current_month_sales_percentage'] }}</td>
+    <td>{{ row['Last_month_sales'] }}</td>
+    <td>{{ row['sales_Last_Year_Last_Month_Sales'] }}</td>
+    <td>{{ row['sales_last_Month_Sales_percentage']  }}</td>
+    <td>{{ row['sales_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['sales_Last_Year_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['sales_Two_Month_ago_Sales_percentage'] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</table>
+<center><h2>Smallest 10  Shops in Sales</h2></center>
+<table style="width:100%">
+  <tr>
+    <th>District Name</th>
+    <th>Shop No</th> 
+    <th>{{data1["Given date"]}}</th>
+    <th>{{data1["Last year same month"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1["Current month last month"]}}</th>
+    <th>{{data1["Last month last year"]}}</th>
+    <th>Growth Comparison</th>
+    <th>{{data1['Current month two months ago']}}</th>
+    <th>{{data1['Last year current month two months ago']}}</th>
+    <th>Growth Comparison</th>
+</tr>
+  {% for row in data["SALES_smallest"] %}
+  <tr>
+    <td>{{ row['district_name'] }}</td>
+    <td>{{ row['Shop no'] }}</td>
+    <td>{{ row['current_month_sales'] }}</td>
+    <td>{{ row['last_year_sales'] }}</td>
+    <td>{{ row['current_month_sales_percentage'] }}</td>
+    <td>{{ row['Last_month_sales'] }}</td>
+    <td>{{ row['sales_Last_Year_Last_Month_Sales'] }}</td>
+    <td>{{ row['sales_last_Month_Sales_percentage']  }}</td>
+    <td>{{ row['sales_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['sales_Last_Year_Two_Months_Ago_Sales'] }}</td>
+    <td>{{ row['sales_Two_Month_ago_Sales_percentage'] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>

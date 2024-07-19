@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic ID Input</title>
+</head>
+<body>
+  <form id="myForm">
+    <!-- Placeholder for dynamically set ID -->
+    <label for="dynamicInput">Dynamic Input:</label>
+    <input type="text" id="dynamicInput" name="dynamicInput" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    async function fetchDataFromAPI() {
+      const response = await fetch('https://your-fastapi-endpoint.com/data');
+      const data = await response.json();
+      return data.id; // Assuming API returns an ID to be used as the ID attribute
+    }
+
+    async function setDynamicID() {
+      const dynamicID = await fetchDataFromAPI();
+      const dynamicInput = document.getElementById('dynamicInput');
+      dynamicInput.id = dynamicID; // Set the fetched ID as the input's ID attribute
+    }
+
+    document.addEventListener('DOMContentLoaded', setDynamicID);
+  </script>
+</body>
+</html>

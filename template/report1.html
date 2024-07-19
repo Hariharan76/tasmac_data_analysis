@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;            
+            padding: 10px 20px;
+            background-color: #333;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+        }
+        .navbar a:hover {
+            background-color: #140342;
+        }
+        .select-container {
+            margin-left: auto;
+        }
+        .select-container select {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>   
+
+    <h2 style="text-align: center;">TASMAC Report Year for {{ selected_date }}</h2>
+    <h2 style="text-align: center;">TASMAC Report Place {{ district }}</h2>
+    <form action="/report2" method="post">
+        <label for="chart">Choose a chart:</label>
+        <select id="chart" name="chart">
+            <option value=>  </option>
+            <option value="bar">bar</option>
+            <option value="line">line</option>
+        </select>
+        <input type="text" name="data" value="{{ district }}" placeholder="Enter data...">
+        <input type="submit" value="Generate Report">
+    </form>
+    <h2 style="text-align: center;">Largest 10 IMFS</h2>
+    <table>
+        <tr>
+            <th>District Name</th>
+            <th>Shop No</th> 
+            <th>{{ year["month"] }}-{{ year["year"] }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>Growth Comparison %</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>Growth Comparison % </th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-3 }}</th>
+            <th>Growth Comparison %</th>            
+        </tr>
+        {% for row in data["IMFS_largest"] %}
+        <tr>
+            <td>{{ row["district_name"] }}</td>
+            <td>{{ row["shop_no"] }}</td>
+            <td>{{ row["IMFS_Total_2024"] }}</td>
+            <td>{{ row["IMFS_Total_2023"] }}</td>
+            <td>{{ row["IMFS_Current_Year_Sales_percentage"] }}</td>
+            <td>{{ row["IMFS_Total_2023"] }}</td>
+            <td>{{ row["IMFS_Total_2022"] }}</td>
+            <td>{{ row["IMFS_2023-2022_Sales_percentage"] }}</td>
+            <td>{{ row["IMFS_Total_2022"] }}</td>
+            <td>{{ row["IMFS_Total_2021"] }}</td>
+            <td>{{ row["IMFS_Last_Year_Sales_percentage"] }}</td>         
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 style="text-align: center;">Smallest 10 IMFS</h2>
+    <table>
+        <tr>
+            <th>District Name</th>
+            <th>Shop No</th> 
+            <th>{{ year["month"] }}-{{ year["year"] }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>Growth Comparison %</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>Growth Comparison %</th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-3 }}</th>
+            <th>Growth Comparison %</th>            
+        </tr>
+        {% for row in data["IMFS_smallest"] %}
+        <tr>
+            <td>{{ row["district_name"] }}</td>
+            <td>{{ row["shop_no"] }}</td>
+            <td>{{ row["IMFS_Total_2024"] }}</td>
+            <td>{{ row["IMFS_Total_2023"] }}</td>
+            <td>{{ row["IMFS_Current_Year_Sales_percentage"] }}</td>
+            <td>{{ row["IMFS_Total_2023"] }}</td>
+            <td>{{ row["IMFS_Total_2022"] }}</td>
+            <td>{{ row["IMFS_2023-2022_Sales_percentage"] }}</td>
+            <td>{{ row["IMFS_Total_2022"] }}</td>
+            <td>{{ row["IMFS_Total_2021"] }}</td>
+            <td>{{ row["IMFS_Last_Year_Sales_percentage"] }}</td>         
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 style="text-align: center;">Largest 10 BEER</h2>
+    <table>
+        <tr>
+            <th>District Name</th>
+            <th>Shop No</th> 
+            <th>{{ year["month"] }}-{{ year["year"] }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>Growth Comparison % </th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>Growth Comparison % </th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-3 }}</th>
+            <th>Growth Comparison % </th>            
+        </tr>
+        {% for row in data["BEER_largest"] %}
+        <tr>
+            <td>{{ row["district_name"] }}</td>
+            <td>{{ row["shop_no"] }}</td>
+            <td>{{ row["BEER_Total_2024"] }}</td>
+            <td>{{ row["BEER_Total_2023"] }}</td>
+            <td>{{ row["BEER_Current_Year_Sales_percentage"] }}</td>
+            <td>{{ row["BEER_Total_2023"] }}</td>
+            <td>{{ row["BEER_Total_2022"] }}</td>
+            <td>{{ row["BEER_2023_2022_Sales_percentage"] }}</td>
+            <td>{{ row["BEER_Total_2022"] }}</td>
+            <td>{{ row["BEER_Total_2021"] }}</td>
+            <td>{{ row["BEER_Last_Year_Sales_percentage"] }}</td>         
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 style="text-align: center;">Smallest 10 BEER</h2>
+    <table>
+        <tr>
+            <th>District Name</th>
+            <th>Shop No</th> 
+            <th>{{ year["month"] }}-{{ year["year"] }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>Growth Comparison % </th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>Growth Comparison % </th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-3 }}</th>
+            <th>Growth Comparison %</th>            
+        </tr>
+        {% for row in data["BEER_smallest"] %}
+        <tr>
+            <td>{{ row["district_name"] }}</td>
+            <td>{{ row["shop_no"] }}</td>
+            <td>{{ row["BEER_Total_2024"] }}</td>
+            <td>{{ row["BEER_Total_2023"] }}</td>
+            <td>{{ row["BEER_Current_Year_Sales_percentage"] }}</td>
+            <td>{{ row["BEER_Total_2023"] }}</td>
+            <td>{{ row["BEER_Total_2022"] }}</td>
+            <td>{{ row["BEER_2023_2022_Sales_percentage"] }}</td>
+            <td>{{ row["BEER_Total_2022"] }}</td>
+            <td>{{ row["BEER_Total_2021"] }}</td>
+            <td>{{ row["BEER_Last_Year_Sales_percentage"] }}</td>         
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 style="text-align: center;">Largest 10 SALES</h2>
+    <table>
+        <tr>            
+            <th>District Name</th>
+            <th>Shop No</th> 
+            <th>{{ year["month"] }}-{{ year["year"] }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>Growth Comparison %</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>Growth Comparison % </th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-3 }}</th>
+            <th>Growth Comparison %</th>          
+        </tr>
+        {% for row in data["SALES_largest"] %}
+        <tr>
+            <td>{{ row["district_name"] }}</td>
+            <td>{{ row["shop_no"] }}</td>
+            <td>{{ row["SALES_Total_2024"] }}</td>
+            <td>{{ row["SALES_Total_2023"] }}</td>
+            <td>{{ row["SALES_Current_Year_Sales_percentage"] }}</td>
+            <td>{{ row["SALES_Total_2023"] }}</td>
+            <td>{{ row["SALES_Total_2022"] }}</td>
+            <td>{{ row["Sales_2023-2022_Sales_percentage"] }}</td>
+            <td>{{ row["SALES_Total_2022"] }}</td>
+            <td>{{ row["SALES_Total_2021"] }}</td>
+            <td>{{ row["SALES_Last_Year_Sales_percentage"] }}</td>         
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 style="text-align: center;">Smallest 10 SALES</h2>
+    <table>
+        <tr>            
+            <th>District Name</th>
+            <th>Shop No</th> 
+            <th>{{ year["month"] }}-{{ year["year"] }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>Growth Comparison %</th>
+            <th>{{ year["month"] }}-{{ year['year']-1 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>Growth Comparison %</th>
+            <th>{{ year["month"] }}-{{ year['year']-2 }}</th>
+            <th>{{ year["month"] }}-{{ year['year']-3 }}</th>
+            <th>Growth Comparison %</th>          
+        </tr>
+        {% for row in data["SALES_smallest"] %}
+        <tr>
+            <td>{{ row["district_name"] }}</td>
+            <td>{{ row["shop_no"] }}</td>
+            <td>{{ row["SALES_Total_2024"] }}</td>
+            <td>{{ row["SALES_Total_2023"] }}</td>
+            <td>{{ row["SALES_Current_Year_Sales_percentage"] }}</td>
+            <td>{{ row["SALES_Total_2023"] }}</td>
+            <td>{{ row["SALES_Total_2022"] }}</td>
+            <td>{{ row["Sales_2023-2022_Sales_percentage"] }}</td>
+            <td>{{ row["SALES_Total_2022"] }}</td>
+            <td>{{ row["SALES_Total_2021"] }}</td>
+            <td>{{ row["SALES_Last_Year_Sales_percentage"] }}</td>         
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
